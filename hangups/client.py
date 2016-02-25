@@ -218,20 +218,17 @@ class Client(object):
         if type(image_file) is list:
             if len(image_file)==2:
                 image_filename = image_file[0]
-                print(image_file[1])
+#                 print(image_file[1])
                 image_data = base64.b64decode(image_file[1])
-                print("image by msg",image_data)
-                print ("length", len(image_data))
+#                 print("image by msg",image_data)
+#                 print ("length", len(image_data))
             else:
                 logger.warning("There is something weird in the image")
                 return None
         else:
-            print ("filename",filename)
             image_filename = (filename if filename
                               else os.path.basename(image_file.name))
             image_data = image_file.read()
-            print("image by name",image_data)
-            print ("length", len(image_data))
             
         # Create image and request upload URL
         res1 = yield from self._base_request(
